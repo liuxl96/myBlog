@@ -1,19 +1,24 @@
 ---
-title: 'When to Use Static Generation v.s. Server-side Rendering'
-date: '2020-04-12'
+title: 'Difference between Array and Array-like object'
+date: '2021-04-12'
 ---
 
-We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
+An Object which has a **length property** of a **non-negative Integer**, and usually some indexed properties. For example
 
-You can use Static Generation for many types of pages, including:
+```
+var arraylike = {
+    0:'a',
+    1:'b',
+    2:'c',
+    length:3
+};
+```
 
-- Marketing pages
-- Blog posts
-- E-commerce product listings
-- Help and documentation
+It's not constructed by Array or with an Array literal [], and so (usually) **won't inherit from Array.prototype**. The length property will not usually automatically update either.
 
-You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
+You can convert Array-like Objects to their Array counterparts using **Array.prototype.slice**
 
-On the other hand, Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
+```
+var arr = Array.prototype.slice.call(arraylike);   // ['a', 'b', 'c']
+```
 
-In that case, you can use **Server-Side Rendering**. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate data.

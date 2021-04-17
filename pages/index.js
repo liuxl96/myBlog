@@ -12,11 +12,8 @@ export default function Home({allPostsData}) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://www.nextjs.cn/learn">our Next.js tutorial</a>.)
-        </p>
+        <br />
+        <p><i>乘风好去，长空万里，直下看山河。&nbsp;&nbsp;——&nbsp;&nbsp;《太常引》</i></p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
@@ -33,6 +30,7 @@ export default function Home({allPostsData}) {
             </li>
           ))}
         </ul>
+        <br />
       </section>
     </Layout>
   )
